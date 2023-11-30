@@ -179,13 +179,15 @@ That's the basic process of creating and managing containers with Podman. The es
 ## Ques5 -Describe the key components of a container image. How are container images different from containers themselves?
  Some Key components of container image are given below :- 
 
-1. Base Image
-2. Filesystem
-3. Metadata
-4. Environment Variables
-5. Volume Mount Points
+1. Base Image :- A base image is like the starting point or template for a container. It contains the basic operating system and other necessary software. It's similar to a foundation when building a house; you start with a solid base.
+  
+2. Filesystem :- Think of the filesystem as the structure of folders and files inside a container. It's like the organization of files and folders on your computer. Each container has its own isolated filesystem where the application's files and dependencies are stored.
 
-A container image is a lightweight, standalone, executable package that includes everything needed to run a piece of software, including the code, runtime, system tools, system libraries, and settings. Container images are typically used to deploy and run applications consistently across different environments.
+3. Metadata :-Metadata is information about the container, like its name, version, when it was created, or who created it. It's like a label or tag that helps in recognizing and understanding the container.
+ 
+4. Environment Variables :-Environment variables are like settings or configurations for the containerized application. They are like settings for an app that you can adjust without changing the app itself. For example, they can specify the language, location of files, or other settings needed for the app to work properly.
+
+5. Volume Mount Points :- Volume mount points are pathways that connect the container to the outside world. They allow the container to access or store data externally, like connecting a folder on your computer to a folder inside the container. This helps in sharing or persistently storing data even if the container is stopped or removed.
 
 A container image is like a blueprint or package containing all the necessary components, while a container is an active, running instance created from that blueprint. Containers allow you to run applications in isolated and consistent environments, making them a valuable tool for application deployment and scaling.
 
@@ -307,20 +309,20 @@ docker.io/grafana/grafana     latest      06e5d59b720d  2 days ago          407 
 ## Ques7 -Explain the difference between an image repository and a container registry. How do you push and pull container images to/from a registry using Podman?
 
 
-Registry is the hub of images where we can find the images.
+A container registry is a centralized repository used to store and manage container images. It's a service that allows users to store, retrieve, and organize container images, making it easier to distribute and deploy applications using containers
 
 If we want to see the images, we will simply go webpage URL and search 
 https://hub.docker.com/ the image of docker hub webpage is given below.		
 ![Alt text](<Screenshot from 2023-11-23 11-10-15.png>)
 
 
-Repository
+#### Image repository
 
-Repository is the place where all the version of our image (we want to  pull for container ) is placed, the image of repository is given below:-
+Image repository is the place where all the version of our image (we want to  pull for container ) is placed, the image of repository is given below:-
 
 
 
-First we will select a image we want to pull like in below image i am selecting nodeJS 
+First we will select a image we want to pull like in below image, I am selecting nodeJS 
 
 (AFTER SCROLLING DOWN THE REGISTRY WE WILL SEE LIKE THIS )
 
@@ -334,6 +336,17 @@ I am going to select node js from the options.
 After scrolling down we can see the versions of node JS, where all the version are placed is called repository
 
 ![Alt text](image_versions.png)
+
+Pulling and pushing container images are operations related to managing container images in a container registry. Here's a simple explanation:
+
+#### Pulling an Image:
+
+Pulling refers to downloading a container image from a container registry to your local system or a server. It's like grabbing a copy of a recipe book from a library. When you pull an image, you're getting all the necessary ingredients and instructions (files, dependencies, configurations) needed to create and run a specific application or service as a container.
+
+#### Pushing an Image:
+
+Pushing means uploading a container image from your local system or server to a container registry. It's like adding your own recipe to a library's collection. When you push an image, you're storing it in the registry so that others (or yourself on different machines) can access and use that image to deploy applications as containers.
+
 
 
 ### How to pull image 
@@ -396,8 +409,7 @@ Step 2:- click on the Create repository
 ![Alt text](click_on_registries.png)
 
 Step 3:- go to the mail inbox and open the mail send by docker
-![Alt text](docker_mail.png)
-
+![Alt text](docker_mail.png)We
 Step 4:-Now we will click on the   Verify Email Address
 
 ![Alt text](Click_on_verfication.png)
@@ -407,7 +419,7 @@ We can in the below image that we after clicking on the verify email address we 
 ![Alt text](docker_registry.png)
 
 
-Step 5 :- Now we will click on the repositories and we can see that we have the option of creating a repository.we will click on the Create repository .
+Step 5 :- Now we will click on the repositories and we can see that we have the option of creating a repository.We will click on the Create repository .
 ![Alt text](docker_registry.png)
 
 Step 6:- Now we will fill the repository name and click to create.
@@ -492,14 +504,29 @@ As we can see that our image is successfully pushed with the tag  AS in the pict
 
 ## Ques 8. How can you view the running containers on your system with Podman, and what information is essential when managing containers? 
 
-To see the running containers on our system first we have to to terminal and write a command given below 
+To see the running containers on our system first we have to go to terminal and write a command given below 
 ~~~
-$ podman ps
+$ podman ps 
 ~~~
 ``````
 CONTAINER ID  IMAGE                             COMMAND     CREATED      STATUS          PORTS                   NAMES
 b542b96d48df  docker.io/grafana/grafana:latest              3 hours ago  Up 3 hours ago  0.0.0.0:3001->3000/tcp  grafana
 ``````
+We can also use the command given below to see all the running containers
+
+~~~
+$ podman ps -a
+~~~
+``````
+471c0bb603bc  docker.io/prom/node-exporter:latest                        4 days ago    Up 4 days ago          0.0.0.0:9200->9100/tcp                                                  node-exporter
+1ba054f8a1fa  docker.io/bitnami/prometheus:latest  --config.file=/op...  4 days ago    Exited (0) 2 days ago  0.0.0.0:9090->9090/tcp                                                  prometheus1
+4f6303d0906c  docker.io/grafana/grafana:latest                           2 days ago    Up 2 days ago          0.0.0.0:3010->3000/tcp                                                  grafana
+d4b51ae9037a  k8s.gcr.io/pause:3.5                                       45 hours ago  Up 45 hours ago        0.0.0.0:3000->3000/tcp, 0.0.0.0:9090->9090/tcp, 0.0.0.0:9100->9100/tcp  1191dd13c123-inf
+``````
+
+In this above command 
+'ps' stand for process status.
+'-a' stand for all (we can also use --all in this caommand instead of -a) 
 
 When managing containers, several essential pieces of information are crucial to ensure the proper functioning and security of your containerized applications. Here's a list of important information to consider:
 
@@ -554,7 +581,7 @@ As we can see in the previous image that the volume is made with the name of my-
 Container security is a critical aspect of working with containers to ensure the isolation and protection of your applications and data. Podman, like other containerization tools, addresses container security concerns through various mechanisms and best practices. Here are some key security considerations and how Podman helps address them:
 
 
-Isolation:
+Isolation: Containers should be isolated from each other and the host system to prevent one compromised container from affecting others. Podman uses Linux namespaces and cgroups to provide strong isolation, ensuring that each container has its own separate space to run without interfering with others or the host system.
 
 
 Namespaces and Cgroups: Podman leverages Linux namespaces and cgroups to provide process isolation and resource control for containers. This prevents containers from interfering with each other or the host system.
@@ -876,6 +903,8 @@ e0d7fc09a237  docker.io/prom/alertmanager:latest   --config.file=/et...  About a
 In this command 
 ‘ps’  stands for process status 
 ‘-a’ stands for all means to show me the status of all containers.
+
+As we can see in the previous output that the status of containers with the name grafana, prometheus, minio is 'Up' and the status of container with name alertmanager is 'Exited'.  
 
 
 
