@@ -192,10 +192,14 @@ That's the basic process of creating and managing containers with Podman. The es
 A container image is like a blueprint or package containing all the necessary components, while a container is an active, running instance created from that blueprint. Containers allow you to run applications in isolated and consistent environments, making them a valuable tool for application deployment and scaling.
 
 
-## Ques6 -What is the purpose of a Dockerfile, and how do you use it to build a custom container image with Podman?
+## Ques6 -What is the purpose of a Dockerfile or Containerfile, and how do you use it to build a custom container image with Podman?
 
 
-A Dockerfile or Container File is a text file used to define the instructions and configuration needed to build a custom container image. It serves as a blueprint for creating a container image with all the dependencies and settings required for a specific application or service. Dockerfiles and Containerfiles are commonly used in containerization technologies like Docker and Podman.
+A Dockerfile or Container File is a text file used to define the instructions and configuration needed to build a custom container image. It serves as a blueprint for creating a container image with all the dependencies and settings required for a specific application or service. Dockerfiles and Containerfiles are commonly used in containerization technologies like Docker and Podman. 
+
+#### Are Docker file and Container File same?
+
+Yes, Dockerfile and Containerfile essentially refer to the same concept. Both terms are used interchangeably and represent a text file that contains a set of instructions used to build a Docker or container image.
 
 First we will make a directory with the name docker. To make a directory we have to use a command given below
 ~~~
@@ -250,7 +254,7 @@ In this example:
 We start with an official prometheus base image (prom/prometheus:latest)
 We copy a custom prometheus configuration file (named prometheus.yml) from the host machine into the image and place it in the (/home/aman/prometheus) directory.
 We expose port 9090, which is the default port for prometheus.
-THe CMD instruction specifies the custom command to start prometheus with our custom configuration.
+The CMD instruction specifies the custom command to start prometheus with our custom configuration.
 
 
 After that we will build an image with name prom by the help of command given below 
