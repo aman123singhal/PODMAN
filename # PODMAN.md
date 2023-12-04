@@ -195,7 +195,7 @@ A container image is like a blueprint or package containing all the necessary co
 ## Ques6 -What is the purpose of a Dockerfile or Containerfile, and how do you use it to build a custom container image with Podman?
 
 
-A Dockerfile or Container File is a text file used to define the instructions or configuration needed to build a custom container image. It serves as a blueprint for creating a container image with all the dependencies and settings required for a specific application or service. Dockerfiles and Containerfiles are commonly used in containerization technologies like Docker and Podman. 
+A Dockerfile or Container File is a text file used to define the instructions or configuration needed to build a custom container image. It serves as a blueprint for creating a container image with all the dependencies and settings required for a specific application or service. Dockerfiles or Containerfiles are commonly used in containerization technologies like Docker and Podman. 
 
 #### Are Docker file and Container File same?
 
