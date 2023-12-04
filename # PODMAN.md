@@ -195,7 +195,7 @@ A container image is like a blueprint or package containing all the necessary co
 ## Ques6 -What is the purpose of a Dockerfile or Containerfile, and how do you use it to build a custom container image with Podman?
 
 
-A Dockerfile or Container File is a text file used to define the instructions and configuration needed to build a custom container image. It serves as a blueprint for creating a container image with all the dependencies and settings required for a specific application or service. Dockerfiles and Containerfiles are commonly used in containerization technologies like Docker and Podman. 
+A Dockerfile or Container File is a text file used to define the instructions or configuration needed to build a custom container image. It serves as a blueprint for creating a container image with all the dependencies and settings required for a specific application or service. Dockerfiles and Containerfiles are commonly used in containerization technologies like Docker and Podman. 
 
 #### Are Docker file and Container File same?
 
@@ -516,7 +516,7 @@ $ podman ps
 CONTAINER ID  IMAGE                             COMMAND     CREATED      STATUS          PORTS                   NAMES
 b542b96d48df  docker.io/grafana/grafana:latest              3 hours ago  Up 3 hours ago  0.0.0.0:3001->3000/tcp  grafana
 ``````
-We can also use the command given below to see all the running containers
+We can also use the command given below to see all the containers like running, existed and created. (we can also use --all on the place of -a )
 
 ~~~
 $ podman ps -a
