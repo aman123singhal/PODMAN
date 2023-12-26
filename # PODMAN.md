@@ -1,6 +1,6 @@
 # PODMAN
 
-## Ques1 -What is a container, and how does it differ from a virtual machine?
+## Ques1 -What is a container and how does it differ from a virtual machine?
 
 A container is a lightweight, standalone, and executable software package that includes everything needed to run a piece of software, including the code, runtime, system tools, libraries, and settings. Containers are a way to package and isolate applications so they can be easily deployed and run consistently across different computing environments.
 
